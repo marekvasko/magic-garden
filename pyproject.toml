@@ -1,0 +1,41 @@
+[project]
+name = "magic-garden"
+version = "0.1.0"
+description = "Magic Garden - a flower growing and trading game. This package currently holds its engine."
+readme = "README.md"
+authors = [
+    { name = "Marek Vaško", email = "ivasko@fit.vutbr.cz" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.414",
+    "pytest>=9.2.0",
+    "ruff>=0.17.5",
+]
+
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "ANN", "RUF"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["magic_garden"]
+known-local-folder = ["helpers"]
